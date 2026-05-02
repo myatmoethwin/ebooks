@@ -20,37 +20,39 @@ function renderBooks(books) {
     return;
   }
   grid.innerHTML = books.map(book => `
-    <div class="book-card" onclick="openModal('${book.id}')">
+    <div class="book-card" onclick="openBookModal('${book.id}')">
       <img src="${book.cover || 'https://via.placeholder.com/200x300/2a2a3e/888?text=No+Cover'}" 
            alt="${book.title}" loading="lazy"
            onerror="this.src='https://via.placeholder.com/200x300/2a2a3e/888?text=No+Cover'">
       <div class="book-info">
         <div class="book-title">${book.title}</div>
         <div class="book-author">${book.author}${book.translator ? ' · ' + book.translator : ''}</div>
-        <div class="download-btns">
-          ${book.downloads.epub ? `<a class="dl-btn epub" href="${book.downloads.epub}" onclick="event.stopPropagation()" target="_blank">EPUB</a>` : ''}
-          ${book.downloads.pdf ? `<a class="dl-btn pdf" href="${book.downloads.pdf}" onclick="event.stopPropagation()" target="_blank">PDF</a>` : ''}
-          ${book.downloads.kfx ? `<a class="dl-btn kfx" href="${book.downloads.kfx}" onclick="event.stopPropagation()" target="_blank">KFX</a>` : ''}
+        <div class="action-btns">
+          ${book.downloads.epub ? `<a class="btn read" href="reader.html?id=${book.id}" onclick="event.stopPropagation()">📖 Read</a>` : ''}
+          ${book.downloads.pdf ? `<a class="btn pdf" href="${book.downloads.pdf}" onclick="event.stopPropagation()" target="_blank">PDF</a>` : ''}
+          ${book.downloads.kfx ? `<a class="btn kfx" href="${book.downloads.kfx}" onclick="event.stopPropagation()" target="_blank">KFX</a>` : ''}
         </div>
       </div>
     </div>
   `).join('');
 }
 
-function openModal(id) {
+function openBookModal(id) {
   const book = allBooks.find(b => b.id === id);
   if (!book) return;
+  
   document.getElementById('modalContent').innerHTML = `
     <h2>${book.title}</h2>
     <p class="modal-meta">✍️ ${book.author}</p>
     ${book.translator ? `<p class="modal-meta">📖 ဘာသာပြန်: ${book.translator}</p>` : ''}
     ${book.genre ? `<p class="modal-meta">📚 အမျိုးအစား: ${book.genre}</p>` : ''}
     <p class="modal-desc">${book.description || ''}</p>
-    <div class="download-btns">
-      ${book.downloads.epub ? `<a class="dl-btn epub" href="${book.downloads.epub}" target="_blank">⬇️ EPUB</a>` : ''}
-      ${book.downloads.pdf ? `<a class="dl-btn pdf" href="${book.downloads.pdf}" target="_blank">⬇️ PDF</a>` : ''}
-      ${book.downloads.kfx ? `<a class="dl-btn kfx" href="${book.downloads.kfx}" target="_blank">⬇️ KFX</a>` : ''}
-      ${book.review_url ? `<a class="dl-btn review" href="${book.review_url}" target="_blank">📖 Review</a>` : ''}
+    <div class="action-btns">
+      ${book.downloads.epub ? `<a class="btn read" href="reader.html?id=${book.id}">📖 Read Online</a>` : ''}
+      ${book.downloads.epub ? `<a class="btn epub" href="${book.downloads.epub}" target="_blank">⬇️ EPUB</a>` : ''}
+      ${book.downloads.pdf ? `<a class="btn pdf" href="${book.downloads.pdf}" target="_blank">⬇️ PDF</a>` : ''}
+      ${book.downloads.kfx ? `<a class="btn kfx" href="${book.downloads.kfx}" target="_blank">⬇️ KFX</a>` : ''}
+      ${book.review_url ? `<button class="btn review" onclick="openReview('${book.review_url}', '${book.title.replace(/'/g, "\\'")}')">📰 Review ဖတ်မည်</button>` : ''}
     </div>
   `;
   document.getElementById('modalOverlay').classList.add('active');
@@ -62,6 +64,22 @@ function closeModal() {
 
 function closeModalIfOutside(e) {
   if (e.target.id === 'modalOverlay') closeModal();
+}
+
+function openReview(url, title) {
+  document.getElementById('reviewTitle').textContent = title;
+  document.getElementById('reviewFrame').src = url;
+  document.getElementById('reviewModal').classList.add('active');
+  closeModal();
+}
+
+function closeReview() {
+  document.getElementById('reviewModal').classList.remove('active');
+  document.getElementById('reviewFrame').src = '';
+}
+
+function closeReviewIfOutside(e) {
+  if (e.target.id === 'reviewModal') closeReview();
 }
 
 function applyFilters() {
@@ -92,7 +110,10 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Escape') {
+    closeReview();
+    closeModal();
+  }
 });
 
 loadBooks();
