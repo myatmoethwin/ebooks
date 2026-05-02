@@ -1,19 +1,25 @@
+books.json
 [
   {
     "id": "001",
-    "title": "Sample Book",
-    "author": "Sample Author",
+    "title": "မာနနဲ့ အာဃာတ",
+    "author": "Jane Austen",
+    "published": true,
+    "translator": "တင့်တယ်",
     "genre": "ဘာသာပြန်",
     "language": "Myanmar",
-    "cover": "",
-    "description": "ဒါက test book entry တစ်ခုပါ",
-    "review_url": "",
+    "cover": "1YCnzwilcZBhibF7SYVHKvBkEOgP_M49W",
+    "description": "ဘင်းနက်မိသားစုရဲ့ သမီးငါးယောက် အိမ်ထောင်ရေး ဇာတ်ကြောင်း။ Pride and Prejudice ဝတ္ထုကြီး ဘာသာပြန်။",
+    "review": "ဆရာတင့်တယ်ရဲ့ ဘာသာပြန် ကောင်းလွန်းပြီး မူရင်း English ရသကို ထိန်းသိမ်းနိုင်ပါတယ်။",
     "downloads": {
-      "epub": "",
-      "pdf": "",
-      "kfx": ""
+      "epub": "1FEe-C0GVTOtnpOfm2meZfOJp1CjIDjv4",
+      "pdf": "PDF_FILE_ID_HERE",
+      "kfx": "1YSWcvmB6MICK1YDb2Pt2umtC4jqKq6wa"
     },
-    "tags": ["ဘာသာပြန်"],
-    "added_date": "2026-05-02"
+    "tags": [
+      "ဘာသာပြန်",
+      "ဂန္ထဝင်"
+    ],
+    "added_date": "2026-05-03"
   }
 ]
