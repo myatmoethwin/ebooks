@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📚 My eLibrary — Free Myanmar eBooks</title>
-  <meta name="description" content="ကိုယ်ပိုင် မြန်မာဘာသာ eBook စုစည်းမှု — epub, pdf, kfx တို့ဖြင့် download ရယူနိုင်ပါသည်">
+  <title>📚 My eLibrary</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,9 +18,7 @@
       <span class="brand-text">My eLibrary</span>
     </a>
     <div class="nav-links">
-      <a href="https://myatmoe.info" class="nav-link">Home</a>
-      <a href="https://resume.myatmoe.info" class="nav-link">Resume</a>
-      <a href="#about" class="nav-link">About</a>
+      <a href="https://myatmoe.info" class="nav-link">← Home</a>
     </div>
   </div>
 </nav>
@@ -60,23 +57,12 @@
     <span class="search-icon">🔍</span>
     <input type="text" id="searchInput" placeholder="စာအုပ်အမည် သို့မဟုတ် စာရေးသူ ရှာရန်...">
   </div>
-  
   <div class="filters" id="filterBtns">
-    <button class="filter-btn active" data-filter="all">
-      <span class="filter-icon">📚</span> အားလုံး
-    </button>
-    <button class="filter-btn" data-filter="ဘာသာပြန်">
-      <span class="filter-icon">🌐</span> ဘာသာပြန်
-    </button>
-    <button class="filter-btn" data-filter="မြန်မာ">
-      <span class="filter-icon">🇲🇲</span> မြန်မာ
-    </button>
-    <button class="filter-btn" data-filter="ဂန္ထဝင်">
-      <span class="filter-icon">⭐</span> ဂန္ထဝင်
-    </button>
-    <button class="filter-btn" data-filter="ရော်မန်တစ်">
-      <span class="filter-icon">💕</span> ရော်မန်တစ်
-    </button>
+    <button class="filter-btn active" data-filter="all">📚 အားလုံး</button>
+    <button class="filter-btn" data-filter="ဘာသာပြန်">🌐 ဘာသာပြန်</button>
+    <button class="filter-btn" data-filter="မြန်မာ">🇲🇲 မြန်မာ</button>
+    <button class="filter-btn" data-filter="ဂန္ထဝင်">⭐ ဂန္ထဝင်</button>
+    <button class="filter-btn" data-filter="ရော်မန်တစ်">💕 ရော်မန်တစ်</button>
   </div>
 </section>
 
@@ -85,13 +71,11 @@
     <h2 class="section-title">The Collection</h2>
     <span class="result-count" id="resultCount"></span>
   </div>
-  
   <div class="grid" id="bookGrid">
     <p class="loading-msg">📚 Loading library...</p>
   </div>
 </section>
 
-<!-- Book Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
   <div class="modal modal-detail">
     <button class="modal-close" onclick="closeModal()">✕</button>
@@ -99,37 +83,19 @@
   </div>
 </div>
 
-<!-- Review Iframe Modal -->
 <div class="modal-overlay" id="reviewModal" onclick="closeReviewIfOutside(event)">
   <div class="modal modal-fullscreen">
     <div class="modal-header">
       <span class="modal-title" id="reviewTitle">Review</span>
-      <button class="modal-close" onclick="closeReview()">✕</button>
+      <button class="modal-close-inline" onclick="closeReview()">✕</button>
     </div>
     <iframe id="reviewFrame" src="" frameborder="0"></iframe>
   </div>
 </div>
 
-<footer id="about" class="footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3>📖 My eLibrary</h3>
-      <p>Personal collection of curated Myanmar eBooks. Built for personal reading and archival purposes.</p>
-    </div>
-    <div class="footer-section">
-      <h4>Formats</h4>
-      <p>EPUB · PDF · KFX</p>
-    </div>
-    <div class="footer-section">
-      <h4>Connect</h4>
-      <p>
-        <a href="https://github.com/myatmoethwin" target="_blank">GitHub</a> ·
-        <a href="https://myatmoe.info">Home</a>
-      </p>
-    </div>
-  </div>
+<footer class="footer">
   <div class="footer-bottom">
-    <p>© 2026 Myat Moe Thwin · Built with ❤️ on GitHub Pages</p>
+    <p>© 2026 Myat Moe Thwin · <a href="https://myatmoe.info">myatmoe.info</a></p>
   </div>
 </footer>
 
