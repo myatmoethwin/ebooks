@@ -1,0 +1,19 @@
+[
+  {
+    "id": "001",
+    "title": "Sample Book",
+    "author": "Sample Author",
+    "genre": "ဘာသာပြန်",
+    "language": "Myanmar",
+    "cover": "https://via.placeholder.com/200x300/2a2a3e/888?text=Sample",
+    "description": "ဒါက sample book entry တစ်ခုပါ",
+    "review_url": "",
+    "downloads": {
+      "epub": "",
+      "pdf": "",
+      "kfx": ""
+    },
+    "tags": ["ဘာသာပြန်"],
+    "added_date": "2026-05-02"
+  }
+]

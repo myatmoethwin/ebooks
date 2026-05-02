@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 My eLibrary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>📚 My eLibrary</h1>
+  <p>Free Myanmar eBooks · epub · pdf · kfx</p>
+</header>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="🔍 စာအုပ်အမည် / စာရေးသူ ရှာရန်...">
+</div>
+
+<div class="filters" id="filterBtns">
+  <button class="filter-btn active" data-filter="all">အားလုံး</button>
+  <button class="filter-btn" data-filter="ဘာသာပြန်">ဘာသာပြန်</button>
+  <button class="filter-btn" data-filter="မြန်မာ">မြန်မာ</button>
+  <button class="filter-btn" data-filter="ဂန္ထဝင်">ဂန္ထဝင်</button>
+</div>
+
+<div class="grid" id="bookGrid">
+  <p style="text-align:center;padding:40px;color:#888">Loading books...</p>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
+  <div class="modal">
+    <span class="modal-close" onclick="closeModal()">✕</span>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 My eLibrary · Built with ❤️ on GitHub Pages</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
