@@ -30,10 +30,22 @@
   <p style="text-align:center;padding:40px;color:#888">Loading books...</p>
 </div>
 
+<!-- Book Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
-  <div class="modal">
+  <div class="modal modal-large">
     <span class="modal-close" onclick="closeModal()">✕</span>
     <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Review Iframe Modal -->
+<div class="modal-overlay" id="reviewModal" onclick="closeReviewIfOutside(event)">
+  <div class="modal modal-fullscreen">
+    <div class="modal-header">
+      <span class="modal-title" id="reviewTitle">Review</span>
+      <span class="modal-close" onclick="closeReview()">✕</span>
+    </div>
+    <iframe id="reviewFrame" src="" frameborder="0"></iframe>
   </div>
 </div>
 
