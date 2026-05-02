@@ -60,7 +60,7 @@ body{font-family:'DM Sans','Padauk',sans-serif;background:var(--bg0);color:var(-
 .cbs{position:absolute;bottom:8px;left:8px;display:flex;gap:4px;flex-wrap:wrap;z-index:3}
 .cb{font-size:.6em;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:4px}
 .ce{background:var(--g-bg);color:var(--g-tx)}
-.cp{background:var(--r-bg);color:var(--r-tx)}
+.cpdf{background:var(--r-bg);color:var(--r-tx)}
 .ck{background:var(--b-bg);color:var(--b-tx)}
 .ni{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg3);padding:16px;text-align:center;gap:8px}
 .ni-i{font-size:2em;opacity:.2}
@@ -70,23 +70,33 @@ body{font-family:'DM Sans','Padauk',sans-serif;background:var(--bg0);color:var(-
 .ca{font-size:.8em;color:var(--grey);flex:1;margin-bottom:8px;font-style:italic}
 .ctt{display:flex;gap:4px;flex-wrap:wrap}
 .ctag{font-size:.65em;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--grey);border:1px solid var(--line2)}
+
+/* MODAL */
 .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px}
 .ov.on{display:flex}
-.mo{background:var(--bg1);border:1px solid var(--line);border-radius:14px;max-width:740px;width:100%;max-height:88vh;overflow-y:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.mo{background:var(--bg1);border:1px solid var(--line);border-radius:14px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
 .mo::-webkit-scrollbar{width:5px}
 .mo::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
-.mi{display:grid;grid-template-columns:195px 1fr}
+.mi{display:grid;grid-template-columns:210px 1fr}
 .ml{padding:28px 0 28px 28px}
 .mc{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.6);display:block}
 .mnc{width:100%;aspect-ratio:2/3;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:3em;opacity:.2}
 .mr{padding:28px 28px 28px 22px}
 .mt{font-family:'DM Serif Display',serif;font-size:1.7em;color:var(--white);line-height:1.15;margin-bottom:6px;padding-right:32px}
-.mau{font-size:.92em;color:var(--gold);margin-bottom:18px;font-style:italic}
-.mm{display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:16px}
+.mau{font-size:.92em;color:var(--gold);margin-bottom:16px;font-style:italic}
+.mm{display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:14px}
 .mmi{font-size:.82em;color:var(--grey)}
 .mmi b{color:var(--grey2);font-weight:500}
-.mhr{height:1px;background:var(--line);margin:16px 0}
-.md{font-size:.95em;color:var(--grey);line-height:1.75;margin-bottom:24px;font-family:'Padauk',sans-serif}
+.mhr{height:1px;background:var(--line);margin:14px 0}
+
+/* Description section */
+.m-section-label{font-size:.7em;text-transform:uppercase;letter-spacing:.15em;color:var(--grey2);font-weight:500;margin-bottom:6px}
+.md{font-size:.95em;color:var(--grey);line-height:1.75;margin-bottom:16px;font-family:'Padauk',sans-serif}
+
+/* Review section */
+.review-box{background:var(--bg2);border:1px solid var(--line2);border-left:3px solid var(--gold);border-radius:6px;padding:14px 16px;margin-bottom:20px}
+.review-text{font-size:.92em;color:var(--grey);line-height:1.8;font-family:'Padauk',sans-serif;font-style:italic}
+
 .ma{display:flex;gap:8px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:.82em;font-weight:700;text-decoration:none;cursor:pointer;border:none;font-family:'DM Sans','Padauk',sans-serif;letter-spacing:.02em;transition:all .2s}
 .btn:hover{transform:translateY(-2px);opacity:.9}
@@ -94,20 +104,18 @@ body{font-family:'DM Sans','Padauk',sans-serif;background:var(--bg0);color:var(-
 .be{background:var(--g-bg);color:var(--g-tx);border:1px solid #2a4a2a}
 .bp{background:var(--r-bg);color:var(--r-tx);border:1px solid #4a2a2a}
 .bk{background:var(--b-bg);color:var(--b-tx);border:1px solid #2a2a4a}
-.bv{background:var(--p-bg);color:var(--p-tx);border:1px solid #2a2040}
 .xbtn{position:absolute;top:14px;right:16px;background:var(--bg3);border:none;color:var(--grey);width:32px;height:32px;border-radius:50%;font-size:1em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5}
 .xbtn:hover{background:var(--r-bg);color:var(--r-tx)}
-.rvm{max-width:1100px;width:100%;height:88vh;display:flex;flex-direction:column;padding:0;border-radius:14px;overflow:hidden}
-.rvh{background:var(--bg2);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);flex-shrink:0}
-.rvt{font-family:'DM Serif Display',serif;color:var(--white);font-size:1em}
-.rvh .xbtn{position:static}
-#rvf{flex:1;width:100%;border:none;background:#fff}
+
 footer{background:var(--bg1);border-top:1px solid var(--line);text-align:center;padding:20px;font-size:.78em;color:var(--grey2)}
 footer a{color:var(--gold);text-decoration:none}
+
 @media(max-width:640px){
   .grid{grid-template-columns:repeat(2,1fr);gap:14px;padding:18px 16px 60px}
   .mi{grid-template-columns:1fr}
   .ml{padding:22px 22px 0}
+  .ml .mc,.ml .mnc{max-width:140px;margin:0 auto}
+  .mr{padding:16px 22px 22px}
   .hero{padding:44px 20px 36px}
   .stats{flex-wrap:wrap}
 }
@@ -151,111 +159,220 @@ footer a{color:var(--gold);text-decoration:none}
 <div class="grid" id="grid"><p class="msg">Loading library…</p></div>
 
 <div class="ov" id="dOv" onclick="oc(event,'dOv',closeD)">
-  <div class="mo" id="dMo">
+  <div class="mo">
     <button class="xbtn" onclick="closeD()">✕</button>
     <div id="dCon"></div>
-  </div>
-</div>
-
-<div class="ov" id="rOv" onclick="oc(event,'rOv',closeR)">
-  <div class="mo rvm">
-    <div class="rvh">
-      <span class="rvt" id="rvT"></span>
-      <button class="xbtn" onclick="closeR()">✕</button>
-    </div>
-    <iframe id="rvf" src="" frameborder="0"></iframe>
   </div>
 </div>
 
 <footer>© 2026 Myat Moe Thwin · <a href="https://myatmoe.info">myatmoe.info</a> · Built on GitHub Pages</footer>
 
 <script>
-var bks=[],af='all';
+// ═══════════════════════════════════════
+//  Google Drive URL Builders
+// ═══════════════════════════════════════
+var DL   = "https://drive.google.com/uc?export=download&id=";
+var THUMB = "https://drive.google.com/thumbnail?id=";
+var THUMB_SZ = "&sz=w400";
+
+function coverUrl(id){
+  if(!id) return '';
+  // If already a full URL (http...), return as-is
+  if(id.startsWith('http')) return id;
+  return THUMB + id + THUMB_SZ;
+}
+
+function dlUrl(id){
+  if(!id) return '';
+  if(id.startsWith('http')) return id;
+  return DL + id;
+}
+
+// ═══════════════════════════════════════
+//  State
+// ═══════════════════════════════════════
+var bks=[], af='all';
+
+// ═══════════════════════════════════════
+//  Init — load books.json
+// ═══════════════════════════════════════
 async function init(){
   try{
-    var r=await fetch('books.json?t='+Date.now());
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    var d=await r.json();
-    bks=Array.isArray(d)?d:[];
-    stat();rend(bks);
+    var r = await fetch('books.json?t='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    var d = await r.json();
+    // Only show published books (published:false = hidden)
+    bks = Array.isArray(d)
+      ? d.filter(function(b){ return b.published !== false; })
+      : [];
+    stat();
+    rend(bks);
   }catch(e){
-    document.getElementById('grid').innerHTML='<p class="msg" style="color:#cf8e7e">Could not load library — '+e.message+'</p>';
+    document.getElementById('grid').innerHTML =
+      '<p class="msg" style="color:#cf8e7e">Could not load library — '+e.message+'</p>';
   }
 }
+
 function stat(){
-  document.getElementById('sN').textContent=bks.length;
-  var s=new Set();bks.forEach(function(b){(b.tags||[]).forEach(function(t){s.add(t)})});
-  document.getElementById('sC').textContent=s.size;
+  document.getElementById('sN').textContent = bks.length;
+  var s = new Set();
+  bks.forEach(function(b){ (b.tags||[]).forEach(function(t){ s.add(t); }); });
+  document.getElementById('sC').textContent = s.size;
 }
-function ex(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+// ═══════════════════════════════════════
+//  HTML escape
+// ═══════════════════════════════════════
+function ex(s){
+  if(!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+// ═══════════════════════════════════════
+//  Render grid
+// ═══════════════════════════════════════
 function rend(list){
-  var g=document.getElementById('grid'),c=document.getElementById('sc');
-  c.textContent=list.length===bks.length?list.length+' books':list.length+'/'+bks.length;
-  if(!list.length){g.innerHTML='<p class="msg">No books found.</p>';return;}
-  g.innerHTML=list.map(function(b){
-    var dl=b.downloads||{},fs=[],tags=(b.tags||[]).slice(0,2);
-    if(dl.epub)fs.push(['EPUB','ce']);if(dl.pdf)fs.push(['PDF','cp']);if(dl.kfx)fs.push(['KFX','ck']);
-    var img=b.cover
-      ?'<img src="'+ex(b.cover)+'" alt="'+ex(b.title)+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=ni><div class=ni-i>📖</div><div class=ni-t>'+ex(b.title).replace(/\'/g,'').replace(/"/g,'')+'</div></div>\'">'
-      :'<div class="ni"><div class="ni-i">📖</div><div class="ni-t">'+ex(b.title)+'</div></div>';
+  var g = document.getElementById('grid');
+  var c = document.getElementById('sc');
+  c.textContent = list.length === bks.length
+    ? list.length + ' books'
+    : list.length + ' / ' + bks.length;
+
+  if(!list.length){
+    g.innerHTML = '<p class="msg">No books found.</p>';
+    return;
+  }
+
+  g.innerHTML = list.map(function(b){
+    var dl  = b.downloads || {};
+    var fs  = [];
+    if(dl.epub) fs.push(['EPUB','ce']);
+    if(dl.pdf)  fs.push(['PDF','cpdf']);
+    if(dl.kfx)  fs.push(['KFX','ck']);
+    var tags = (b.tags||[]).slice(0,2);
+    var cUrl = coverUrl(b.cover);
+
+    var imgHtml = cUrl
+      ? '<img src="'+ex(cUrl)+'" alt="'+ex(b.title)+'" loading="lazy"'
+        +' onerror="this.parentNode.innerHTML=\'<div class=ni><div class=ni-i>📖</div>'
+        +'<div class=ni-t>'+ex(b.title).replace(/'/g,'').replace(/"/g,'')+'</div></div>\'">'
+      : '<div class="ni"><div class="ni-i">📖</div><div class="ni-t">'+ex(b.title)+'</div></div>';
+
     return '<div class="card" onclick="openD(\''+ex(b.id)+'\')">'
-      +'<div class="ci"><div class="cs"></div>'+img
-      +(fs.length?'<div class="cbs">'+fs.map(function(f){return'<span class="cb '+f[1]+'">'+f[0]+'</span>'}).join('')+'</div>':'')
-      +'</div><div class="cb2"><div class="ct">'+ex(b.title)+'</div>'
+      +'<div class="ci"><div class="cs"></div>'+imgHtml
+      +(fs.length ? '<div class="cbs">'+fs.map(function(f){
+          return '<span class="cb '+f[1]+'">'+f[0]+'</span>';
+        }).join('')+'</div>' : '')
+      +'</div>'
+      +'<div class="cb2">'
+      +'<div class="ct">'+ex(b.title)+'</div>'
       +'<div class="ca">'+ex(b.author)+(b.translator?' — '+ex(b.translator):'')+'</div>'
-      +(tags.length?'<div class="ctt">'+tags.map(function(t){return'<span class="ctag">'+ex(t)+'</span>'}).join('')+'</div>':'')
+      +(tags.length ? '<div class="ctt">'+tags.map(function(t){
+          return '<span class="ctag">'+ex(t)+'</span>';
+        }).join('')+'</div>' : '')
       +'</div></div>';
   }).join('');
 }
+
+// ═══════════════════════════════════════
+//  Detail Modal
+// ═══════════════════════════════════════
 function openD(id){
-  var b=bks.find(function(x){return x.id===id});if(!b)return;
-  var dl=b.downloads||{};
-  var cov=b.cover?'<img class="mc" src="'+ex(b.cover)+'" alt="'+ex(b.title)+'" onerror="this.outerHTML=\'<div class=mnc>📖</div>\'">'
-    :'<div class="mnc">📖</div>';
-  document.getElementById('dCon').innerHTML=
-    '<div class="mi"><div class="ml">'+cov+'</div><div class="mr">'
+  var b = bks.find(function(x){ return x.id === id; });
+  if(!b) return;
+
+  var dl   = b.downloads || {};
+  var cUrl = coverUrl(b.cover);
+
+  var coverHtml = cUrl
+    ? '<img class="mc" src="'+ex(cUrl)+'" alt="'+ex(b.title)+'"'
+      +' onerror="this.outerHTML=\'<div class=mnc>📖</div>\'">'
+    : '<div class="mnc">📖</div>';
+
+  // Build download buttons
+  var btns = '';
+  if(dl.epub) btns += '<a class="btn be" href="'+ex(dlUrl(dl.epub))+'" target="_blank">⬇ EPUB</a>';
+  if(dl.pdf)  btns += '<a class="btn bp" href="'+ex(dlUrl(dl.pdf))+'"  target="_blank">⬇ PDF</a>';
+  if(dl.kfx)  btns += '<a class="btn bk" href="'+ex(dlUrl(dl.kfx))+'" target="_blank">⬇ KFX</a>';
+
+  // Review block — only show if review field exists
+  var reviewHtml = b.review
+    ? '<div class="mhr"></div>'
+      +'<div class="m-section-label">📖 Review</div>'
+      +'<div class="review-box"><p class="review-text">'+ex(b.review)+'</p></div>'
+    : '';
+
+  document.getElementById('dCon').innerHTML =
+    '<div class="mi">'
+    +'<div class="ml">'+coverHtml+'</div>'
+    +'<div class="mr">'
     +'<div class="mt">'+ex(b.title)+'</div>'
-    +'<div class="mau">'+ex(b.author)+(b.translator?' &mdash; ဘာသာပြန်: '+ex(b.translator):'')+'</div>'
+    +'<div class="mau">'+ex(b.author)
+      +(b.translator ? ' — ဘာသာပြန်: '+ex(b.translator) : '')
+    +'</div>'
     +'<div class="mm">'
-    +(b.genre?'<span class="mmi"><b>Genre</b> '+ex(b.genre)+'</span>':'')
-    +(b.language?'<span class="mmi"><b>Language</b> '+ex(b.language)+'</span>':'')
-    +(b.added_date?'<span class="mmi"><b>Added</b> '+ex(b.added_date)+'</span>':'')
-    +'</div><div class="mhr"></div>'
-    +'<p class="md">'+ex(b.description||'No description available.')+'</p>'
-    +'<div class="ma">'
-    +(dl.epub?'<a class="btn br" href="reader.html?id='+b.id+'">📖 Read Online</a>':'')
-    +(dl.epub?'<a class="btn be" href="'+ex(dl.epub)+'" target="_blank">⬇ EPUB</a>':'')
-    +(dl.pdf?'<a class="btn bp" href="'+ex(dl.pdf)+'" target="_blank">⬇ PDF</a>':'')
-    +(dl.kfx?'<a class="btn bk" href="'+ex(dl.kfx)+'" target="_blank">⬇ KFX</a>':'')
-    +(b.review_url?'<button class="btn bv" onclick="openR(\''+ex(b.review_url).replace(/'/g,"\\'")+'\',' +'\''+ex(b.title).replace(/'/g,"\\'")+'\')">📰 Review</button>':'')
-    +'</div></div></div>';
+    +(b.genre    ? '<span class="mmi"><b>Genre</b> '+ex(b.genre)+'</span>' : '')
+    +(b.language ? '<span class="mmi"><b>Language</b> '+ex(b.language)+'</span>' : '')
+    +(b.added_date ? '<span class="mmi"><b>Added</b> '+ex(b.added_date)+'</span>' : '')
+    +'</div>'
+    +'<div class="mhr"></div>'
+    +'<div class="m-section-label">Description</div>'
+    +'<p class="md">'+ex(b.description || 'No description available.')+'</p>'
+    +reviewHtml
+    +'<div class="ma">'+btns+'</div>'
+    +'</div></div>';
+
   document.getElementById('dOv').classList.add('on');
 }
-function closeD(){document.getElementById('dOv').classList.remove('on')}
-function openR(url,title){
-  document.getElementById('rvT').textContent=title;
-  document.getElementById('rvf').src=url;
-  document.getElementById('rOv').classList.add('on');
-  closeD();
+
+function closeD(){
+  document.getElementById('dOv').classList.remove('on');
 }
-function closeR(){document.getElementById('rOv').classList.remove('on');document.getElementById('rvf').src=''}
-function oc(e,id,fn){if(e.target.id===id)fn()}
+
+function oc(e, id, fn){
+  if(e.target.id === id) fn();
+}
+
+// ═══════════════════════════════════════
+//  Filter & Search
+// ═══════════════════════════════════════
 function applyF(){
-  var q=document.getElementById('srch').value.toLowerCase().trim(),list=bks;
-  if(af!=='all')list=list.filter(function(b){return(b.tags||[]).indexOf(af)>-1});
-  if(q)list=list.filter(function(b){
-    return b.title.toLowerCase().indexOf(q)>-1||b.author.toLowerCase().indexOf(q)>-1
-      ||(b.translator||'').toLowerCase().indexOf(q)>-1;
-  });
+  var q = document.getElementById('srch').value.toLowerCase().trim();
+  var list = bks;
+  if(af !== 'all'){
+    list = list.filter(function(b){
+      return (b.tags||[]).indexOf(af) > -1;
+    });
+  }
+  if(q){
+    list = list.filter(function(b){
+      return b.title.toLowerCase().indexOf(q) > -1
+        || b.author.toLowerCase().indexOf(q) > -1
+        || (b.translator||'').toLowerCase().indexOf(q) > -1
+        || (b.description||'').toLowerCase().indexOf(q) > -1;
+    });
+  }
   rend(list);
 }
-document.getElementById('srch').addEventListener('input',applyF);
-document.getElementById('tagsRow').addEventListener('click',function(e){
-  var btn=e.target.closest('.tb');if(!btn)return;
-  document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('on')});
-  btn.classList.add('on');af=btn.dataset.f;applyF();
+
+document.getElementById('srch').addEventListener('input', applyF);
+
+document.getElementById('tagsRow').addEventListener('click', function(e){
+  var btn = e.target.closest('.tb');
+  if(!btn) return;
+  document.querySelectorAll('.tb').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  af = btn.dataset.f;
+  applyF();
 });
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeD();closeR()}});
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeD();
+});
+
 init();
 </script>
 </body>
