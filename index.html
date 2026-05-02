@@ -1,104 +1,262 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📚 My eLibrary</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myat Moe's eLibrary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg0:#0d0d0f;--bg1:#141416;--bg2:#1a1a1e;--bg3:#222228;
+  --line:#2a2a32;--line2:#353540;
+  --gold:#e8b84b;--gold2:#f5d07a;
+  --white:#f0ede8;--grey:#8a8a9a;--grey2:#6a6a7a;
+  --g-bg:#162218;--g-tx:#7ecf8e;
+  --r-bg:#221618;--r-tx:#cf8e7e;
+  --b-bg:#161822;--b-tx:#7e9ecf;
+  --p-bg:#1a1622;--p-tx:#a87ecf;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans','Padauk',sans-serif;background:var(--bg0);color:var(--white);min-height:100vh;-webkit-font-smoothing:antialiased}
+.nav{height:56px;background:var(--bg1);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.2em;color:var(--white);text-decoration:none}
+.nav-logo em{color:var(--gold);font-style:italic}
+.nav-home{font-size:.82em;color:var(--grey);text-decoration:none;border:1px solid var(--line2);padding:6px 14px;border-radius:6px;transition:all .2s}
+.nav-home:hover{color:var(--white);border-color:var(--grey2)}
+.hero{padding:64px 28px 48px;background:var(--bg1);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(232,184,75,.07) 0%,transparent 60%);pointer-events:none}
+.hero-tag{display:inline-block;font-size:.72em;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500}
+.hero-h1{font-family:'DM Serif Display',serif;font-size:clamp(2.2em,5vw,3.6em);line-height:1.1;color:var(--white);margin-bottom:12px}
+.hero-h1 em{color:var(--gold);font-style:italic}
+.stats{margin-top:36px;border:1px solid var(--line);border-radius:10px;overflow:hidden;display:inline-flex;background:var(--bg2)}
+.si{padding:16px 28px;border-right:1px solid var(--line)}
+.si:last-child{border-right:none}
+.sn{display:block;font-family:'DM Serif Display',serif;font-size:2em;color:var(--gold);line-height:1}
+.sl{display:block;font-size:.7em;color:var(--grey2);text-transform:uppercase;letter-spacing:.12em;margin-top:3px}
+.ctrl{max-width:1200px;margin:0 auto;padding:24px 24px 0}
+.sw{position:relative;max-width:600px;margin-bottom:20px}
+.sw input{width:100%;padding:12px 18px 12px 44px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;color:var(--white);font-size:.95em;font-family:'Padauk','DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.sw input:focus{border-color:var(--gold)}
+.sw input::placeholder{color:var(--grey2)}
+.sw::before{content:'⌕';position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--grey2);font-size:1.1em;pointer-events:none}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tb{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:20px;border:1px solid var(--line2);background:transparent;color:var(--grey);font-size:.83em;font-family:'Padauk','DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.tb:hover{border-color:var(--gold);color:var(--gold)}
+.tb.on{background:var(--gold);border-color:var(--gold);color:var(--bg0);font-weight:700}
+.tdot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.7;flex-shrink:0}
+.sh{max-width:1200px;margin:28px auto 0;padding:0 24px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.sh-t{font-family:'DM Serif Display',serif;font-size:1.3em;color:var(--white);font-style:italic}
+.sh-c{font-size:.8em;color:var(--grey2)}
+.grid{max-width:1200px;margin:0 auto;padding:24px 24px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:22px}
+.msg{grid-column:1/-1;text-align:center;padding:60px;color:var(--grey2);font-style:italic}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.ci{position:relative;aspect-ratio:2/3;overflow:hidden;background:var(--bg3)}
+.ci img{width:100%;height:100%;object-fit:cover;transition:transform .35s;display:block}
+.card:hover .ci img{transform:scale(1.04)}
+.cs{position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(to right,rgba(0,0,0,.5),transparent);z-index:2}
+.cbs{position:absolute;bottom:8px;left:8px;display:flex;gap:4px;flex-wrap:wrap;z-index:3}
+.cb{font-size:.6em;font-weight:700;letter-spacing:.06em;padding:3px 7px;border-radius:4px}
+.ce{background:var(--g-bg);color:var(--g-tx)}
+.cp{background:var(--r-bg);color:var(--r-tx)}
+.ck{background:var(--b-bg);color:var(--b-tx)}
+.ni{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg3);padding:16px;text-align:center;gap:8px}
+.ni-i{font-size:2em;opacity:.2}
+.ni-t{font-size:.8em;color:var(--grey2);line-height:1.3}
+.cb2{padding:12px 14px 16px;flex:1;display:flex;flex-direction:column}
+.ct{font-weight:500;font-size:.95em;color:var(--white);line-height:1.25;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ca{font-size:.8em;color:var(--grey);flex:1;margin-bottom:8px;font-style:italic}
+.ctt{display:flex;gap:4px;flex-wrap:wrap}
+.ctag{font-size:.65em;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--grey);border:1px solid var(--line2)}
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;padding:20px}
+.ov.on{display:flex}
+.mo{background:var(--bg1);border:1px solid var(--line);border-radius:14px;max-width:740px;width:100%;max-height:88vh;overflow-y:auto;position:relative;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.mo::-webkit-scrollbar{width:5px}
+.mo::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
+.mi{display:grid;grid-template-columns:195px 1fr}
+.ml{padding:28px 0 28px 28px}
+.mc{width:100%;aspect-ratio:2/3;border-radius:8px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,.6);display:block}
+.mnc{width:100%;aspect-ratio:2/3;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:3em;opacity:.2}
+.mr{padding:28px 28px 28px 22px}
+.mt{font-family:'DM Serif Display',serif;font-size:1.7em;color:var(--white);line-height:1.15;margin-bottom:6px;padding-right:32px}
+.mau{font-size:.92em;color:var(--gold);margin-bottom:18px;font-style:italic}
+.mm{display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:16px}
+.mmi{font-size:.82em;color:var(--grey)}
+.mmi b{color:var(--grey2);font-weight:500}
+.mhr{height:1px;background:var(--line);margin:16px 0}
+.md{font-size:.95em;color:var(--grey);line-height:1.75;margin-bottom:24px;font-family:'Padauk',sans-serif}
+.ma{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:8px;font-size:.82em;font-weight:700;text-decoration:none;cursor:pointer;border:none;font-family:'DM Sans','Padauk',sans-serif;letter-spacing:.02em;transition:all .2s}
+.btn:hover{transform:translateY(-2px);opacity:.9}
+.br{background:var(--gold);color:var(--bg0)}
+.be{background:var(--g-bg);color:var(--g-tx);border:1px solid #2a4a2a}
+.bp{background:var(--r-bg);color:var(--r-tx);border:1px solid #4a2a2a}
+.bk{background:var(--b-bg);color:var(--b-tx);border:1px solid #2a2a4a}
+.bv{background:var(--p-bg);color:var(--p-tx);border:1px solid #2a2040}
+.xbtn{position:absolute;top:14px;right:16px;background:var(--bg3);border:none;color:var(--grey);width:32px;height:32px;border-radius:50%;font-size:1em;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5}
+.xbtn:hover{background:var(--r-bg);color:var(--r-tx)}
+.rvm{max-width:1100px;width:100%;height:88vh;display:flex;flex-direction:column;padding:0;border-radius:14px;overflow:hidden}
+.rvh{background:var(--bg2);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);flex-shrink:0}
+.rvt{font-family:'DM Serif Display',serif;color:var(--white);font-size:1em}
+.rvh .xbtn{position:static}
+#rvf{flex:1;width:100%;border:none;background:#fff}
+footer{background:var(--bg1);border-top:1px solid var(--line);text-align:center;padding:20px;font-size:.78em;color:var(--grey2)}
+footer a{color:var(--gold);text-decoration:none}
+@media(max-width:640px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px;padding:18px 16px 60px}
+  .mi{grid-template-columns:1fr}
+  .ml{padding:22px 22px 0}
+  .hero{padding:44px 20px 36px}
+  .stats{flex-wrap:wrap}
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="/" class="brand">
-      <span class="brand-icon">📖</span>
-      <span class="brand-text">My eLibrary</span>
-    </a>
-    <div class="nav-links">
-      <a href="https://myatmoe.info" class="nav-link">← Home</a>
-    </div>
-  </div>
+<nav class="nav">
+  <a href="/" class="nav-logo">Myat Moe's <em>eLibrary</em></a>
+  <a href="https://myatmoe.info" class="nav-home">← Home</a>
 </nav>
 
 <section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">A Personal Library<br>of Curated Reads</h1>
-    <p class="hero-subtitle">မြန်မာဘာသာပြန် နှင့် ဂန္ထဝင် စာအုပ်များ စုစည်းရာ နေရာ</p>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num" id="statTotal">0</span>
-        <span class="stat-label">Books</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num" id="statGenres">0</span>
-        <span class="stat-label">Categories</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat">
-        <span class="stat-num">3</span>
-        <span class="stat-label">Formats</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-decoration">
-    <div class="floating-book book-1">📕</div>
-    <div class="floating-book book-2">📗</div>
-    <div class="floating-book book-3">📘</div>
-    <div class="floating-book book-4">📙</div>
+  <span class="hero-tag">Personal Collection</span>
+  <h1 class="hero-h1">A Library of<br><em>Curated Books</em></h1>
+  <div class="stats">
+    <div class="si"><span class="sn" id="sN">0</span><span class="sl">Books</span></div>
+    <div class="si"><span class="sn" id="sC">0</span><span class="sl">Categories</span></div>
+    <div class="si"><span class="sn">3</span><span class="sl">Formats</span></div>
   </div>
 </section>
 
-<section class="search-section">
-  <div class="search-wrapper">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="စာအုပ်အမည် သို့မဟုတ် စာရေးသူ ရှာရန်...">
+<div class="ctrl">
+  <div class="sw">
+    <input id="srch" type="text" placeholder="Search by title, author or translator...">
   </div>
-  <div class="filters" id="filterBtns">
-    <button class="filter-btn active" data-filter="all">📚 အားလုံး</button>
-    <button class="filter-btn" data-filter="ဘာသာပြန်">🌐 ဘာသာပြန်</button>
-    <button class="filter-btn" data-filter="မြန်မာ">🇲🇲 မြန်မာ</button>
-    <button class="filter-btn" data-filter="ဂန္ထဝင်">⭐ ဂန္ထဝင်</button>
-    <button class="filter-btn" data-filter="ရော်မန်တစ်">💕 ရော်မန်တစ်</button>
-  </div>
-</section>
-
-<section class="library">
-  <div class="library-header">
-    <h2 class="section-title">The Collection</h2>
-    <span class="result-count" id="resultCount"></span>
-  </div>
-  <div class="grid" id="bookGrid">
-    <p class="loading-msg">📚 Loading library...</p>
-  </div>
-</section>
-
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
-  <div class="modal modal-detail">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modalContent"></div>
+  <div class="tags" id="tagsRow">
+    <button class="tb on" data-f="all"><span class="tdot"></span>All Books</button>
+    <button class="tb" data-f="ဘာသာပြန်"><span class="tdot"></span>ဘာသာပြန်</button>
+    <button class="tb" data-f="မြန်မာ"><span class="tdot"></span>မြန်မာ</button>
+    <button class="tb" data-f="ဂန္ထဝင်"><span class="tdot"></span>ဂန္ထဝင်</button>
+    <button class="tb" data-f="ရော်မန်တစ်"><span class="tdot"></span>ရော်မန်တစ်</button>
   </div>
 </div>
 
-<div class="modal-overlay" id="reviewModal" onclick="closeReviewIfOutside(event)">
-  <div class="modal modal-fullscreen">
-    <div class="modal-header">
-      <span class="modal-title" id="reviewTitle">Review</span>
-      <button class="modal-close-inline" onclick="closeReview()">✕</button>
-    </div>
-    <iframe id="reviewFrame" src="" frameborder="0"></iframe>
+<div class="sh">
+  <span class="sh-t">The Collection</span>
+  <span class="sh-c" id="sc"></span>
+</div>
+
+<div class="grid" id="grid"><p class="msg">Loading library…</p></div>
+
+<div class="ov" id="dOv" onclick="oc(event,'dOv',closeD)">
+  <div class="mo" id="dMo">
+    <button class="xbtn" onclick="closeD()">✕</button>
+    <div id="dCon"></div>
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-bottom">
-    <p>© 2026 Myat Moe Thwin · <a href="https://myatmoe.info">myatmoe.info</a></p>
+<div class="ov" id="rOv" onclick="oc(event,'rOv',closeR)">
+  <div class="mo rvm">
+    <div class="rvh">
+      <span class="rvt" id="rvT"></span>
+      <button class="xbtn" onclick="closeR()">✕</button>
+    </div>
+    <iframe id="rvf" src="" frameborder="0"></iframe>
   </div>
-</footer>
+</div>
 
-<script src="app.js"></script>
+<footer>© 2026 Myat Moe Thwin · <a href="https://myatmoe.info">myatmoe.info</a> · Built on GitHub Pages</footer>
+
+<script>
+var bks=[],af='all';
+async function init(){
+  try{
+    var r=await fetch('books.json?t='+Date.now());
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    var d=await r.json();
+    bks=Array.isArray(d)?d:[];
+    stat();rend(bks);
+  }catch(e){
+    document.getElementById('grid').innerHTML='<p class="msg" style="color:#cf8e7e">Could not load library — '+e.message+'</p>';
+  }
+}
+function stat(){
+  document.getElementById('sN').textContent=bks.length;
+  var s=new Set();bks.forEach(function(b){(b.tags||[]).forEach(function(t){s.add(t)})});
+  document.getElementById('sC').textContent=s.size;
+}
+function ex(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function rend(list){
+  var g=document.getElementById('grid'),c=document.getElementById('sc');
+  c.textContent=list.length===bks.length?list.length+' books':list.length+'/'+bks.length;
+  if(!list.length){g.innerHTML='<p class="msg">No books found.</p>';return;}
+  g.innerHTML=list.map(function(b){
+    var dl=b.downloads||{},fs=[],tags=(b.tags||[]).slice(0,2);
+    if(dl.epub)fs.push(['EPUB','ce']);if(dl.pdf)fs.push(['PDF','cp']);if(dl.kfx)fs.push(['KFX','ck']);
+    var img=b.cover
+      ?'<img src="'+ex(b.cover)+'" alt="'+ex(b.title)+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=ni><div class=ni-i>📖</div><div class=ni-t>'+ex(b.title).replace(/\'/g,'').replace(/"/g,'')+'</div></div>\'">'
+      :'<div class="ni"><div class="ni-i">📖</div><div class="ni-t">'+ex(b.title)+'</div></div>';
+    return '<div class="card" onclick="openD(\''+ex(b.id)+'\')">'
+      +'<div class="ci"><div class="cs"></div>'+img
+      +(fs.length?'<div class="cbs">'+fs.map(function(f){return'<span class="cb '+f[1]+'">'+f[0]+'</span>'}).join('')+'</div>':'')
+      +'</div><div class="cb2"><div class="ct">'+ex(b.title)+'</div>'
+      +'<div class="ca">'+ex(b.author)+(b.translator?' — '+ex(b.translator):'')+'</div>'
+      +(tags.length?'<div class="ctt">'+tags.map(function(t){return'<span class="ctag">'+ex(t)+'</span>'}).join('')+'</div>':'')
+      +'</div></div>';
+  }).join('');
+}
+function openD(id){
+  var b=bks.find(function(x){return x.id===id});if(!b)return;
+  var dl=b.downloads||{};
+  var cov=b.cover?'<img class="mc" src="'+ex(b.cover)+'" alt="'+ex(b.title)+'" onerror="this.outerHTML=\'<div class=mnc>📖</div>\'">'
+    :'<div class="mnc">📖</div>';
+  document.getElementById('dCon').innerHTML=
+    '<div class="mi"><div class="ml">'+cov+'</div><div class="mr">'
+    +'<div class="mt">'+ex(b.title)+'</div>'
+    +'<div class="mau">'+ex(b.author)+(b.translator?' &mdash; ဘာသာပြန်: '+ex(b.translator):'')+'</div>'
+    +'<div class="mm">'
+    +(b.genre?'<span class="mmi"><b>Genre</b> '+ex(b.genre)+'</span>':'')
+    +(b.language?'<span class="mmi"><b>Language</b> '+ex(b.language)+'</span>':'')
+    +(b.added_date?'<span class="mmi"><b>Added</b> '+ex(b.added_date)+'</span>':'')
+    +'</div><div class="mhr"></div>'
+    +'<p class="md">'+ex(b.description||'No description available.')+'</p>'
+    +'<div class="ma">'
+    +(dl.epub?'<a class="btn br" href="reader.html?id='+b.id+'">📖 Read Online</a>':'')
+    +(dl.epub?'<a class="btn be" href="'+ex(dl.epub)+'" target="_blank">⬇ EPUB</a>':'')
+    +(dl.pdf?'<a class="btn bp" href="'+ex(dl.pdf)+'" target="_blank">⬇ PDF</a>':'')
+    +(dl.kfx?'<a class="btn bk" href="'+ex(dl.kfx)+'" target="_blank">⬇ KFX</a>':'')
+    +(b.review_url?'<button class="btn bv" onclick="openR(\''+ex(b.review_url).replace(/'/g,"\\'")+'\',' +'\''+ex(b.title).replace(/'/g,"\\'")+'\')">📰 Review</button>':'')
+    +'</div></div></div>';
+  document.getElementById('dOv').classList.add('on');
+}
+function closeD(){document.getElementById('dOv').classList.remove('on')}
+function openR(url,title){
+  document.getElementById('rvT').textContent=title;
+  document.getElementById('rvf').src=url;
+  document.getElementById('rOv').classList.add('on');
+  closeD();
+}
+function closeR(){document.getElementById('rOv').classList.remove('on');document.getElementById('rvf').src=''}
+function oc(e,id,fn){if(e.target.id===id)fn()}
+function applyF(){
+  var q=document.getElementById('srch').value.toLowerCase().trim(),list=bks;
+  if(af!=='all')list=list.filter(function(b){return(b.tags||[]).indexOf(af)>-1});
+  if(q)list=list.filter(function(b){
+    return b.title.toLowerCase().indexOf(q)>-1||b.author.toLowerCase().indexOf(q)>-1
+      ||(b.translator||'').toLowerCase().indexOf(q)>-1;
+  });
+  rend(list);
+}
+document.getElementById('srch').addEventListener('input',applyF);
+document.getElementById('tagsRow').addEventListener('click',function(e){
+  var btn=e.target.closest('.tb');if(!btn)return;
+  document.querySelectorAll('.tb').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');af=btn.dataset.f;applyF();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeD();closeR()}});
+init();
+</script>
 </body>
 </html>
