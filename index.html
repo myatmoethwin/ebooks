@@ -3,37 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>📚 My eLibrary</title>
+  <title>📚 My eLibrary — Free Myanmar eBooks</title>
+  <meta name="description" content="ကိုယ်ပိုင် မြန်မာဘာသာ eBook စုစည်းမှု — epub, pdf, kfx တို့ဖြင့် download ရယူနိုင်ပါသည်">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>📚 My eLibrary</h1>
-  <p>Free Myanmar eBooks · epub · pdf · kfx</p>
-</header>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="brand">
+      <span class="brand-icon">📖</span>
+      <span class="brand-text">My eLibrary</span>
+    </a>
+    <div class="nav-links">
+      <a href="https://myatmoe.info" class="nav-link">Home</a>
+      <a href="https://resume.myatmoe.info" class="nav-link">Resume</a>
+      <a href="#about" class="nav-link">About</a>
+    </div>
+  </div>
+</nav>
 
-<div class="search-bar">
-  <input type="text" id="searchInput" placeholder="🔍 စာအုပ်အမည် / စာရေးသူ ရှာရန်...">
-</div>
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">A Personal Library<br>of Curated Reads</h1>
+    <p class="hero-subtitle">မြန်မာဘာသာပြန် နှင့် ဂန္ထဝင် စာအုပ်များ စုစည်းရာ နေရာ</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" id="statTotal">0</span>
+        <span class="stat-label">Books</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num" id="statGenres">0</span>
+        <span class="stat-label">Categories</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Formats</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-decoration">
+    <div class="floating-book book-1">📕</div>
+    <div class="floating-book book-2">📗</div>
+    <div class="floating-book book-3">📘</div>
+    <div class="floating-book book-4">📙</div>
+  </div>
+</section>
 
-<div class="filters" id="filterBtns">
-  <button class="filter-btn active" data-filter="all">အားလုံး</button>
-  <button class="filter-btn" data-filter="ဘာသာပြန်">ဘာသာပြန်</button>
-  <button class="filter-btn" data-filter="မြန်မာ">မြန်မာ</button>
-  <button class="filter-btn" data-filter="ဂန္ထဝင်">ဂန္ထဝင်</button>
-</div>
+<section class="search-section">
+  <div class="search-wrapper">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="စာအုပ်အမည် သို့မဟုတ် စာရေးသူ ရှာရန်...">
+  </div>
+  
+  <div class="filters" id="filterBtns">
+    <button class="filter-btn active" data-filter="all">
+      <span class="filter-icon">📚</span> အားလုံး
+    </button>
+    <button class="filter-btn" data-filter="ဘာသာပြန်">
+      <span class="filter-icon">🌐</span> ဘာသာပြန်
+    </button>
+    <button class="filter-btn" data-filter="မြန်မာ">
+      <span class="filter-icon">🇲🇲</span> မြန်မာ
+    </button>
+    <button class="filter-btn" data-filter="ဂန္ထဝင်">
+      <span class="filter-icon">⭐</span> ဂန္ထဝင်
+    </button>
+    <button class="filter-btn" data-filter="ရော်မန်တစ်">
+      <span class="filter-icon">💕</span> ရော်မန်တစ်
+    </button>
+  </div>
+</section>
 
-<div class="grid" id="bookGrid">
-  <p style="text-align:center;padding:40px;color:#888">Loading books...</p>
-</div>
+<section class="library">
+  <div class="library-header">
+    <h2 class="section-title">The Collection</h2>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+  
+  <div class="grid" id="bookGrid">
+    <p class="loading-msg">📚 Loading library...</p>
+  </div>
+</section>
 
 <!-- Book Detail Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
-  <div class="modal modal-large">
-    <span class="modal-close" onclick="closeModal()">✕</span>
+  <div class="modal modal-detail">
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <div id="modalContent"></div>
   </div>
 </div>
@@ -43,14 +104,33 @@
   <div class="modal modal-fullscreen">
     <div class="modal-header">
       <span class="modal-title" id="reviewTitle">Review</span>
-      <span class="modal-close" onclick="closeReview()">✕</span>
+      <button class="modal-close" onclick="closeReview()">✕</button>
     </div>
     <iframe id="reviewFrame" src="" frameborder="0"></iframe>
   </div>
 </div>
 
-<footer>
-  <p>© 2026 My eLibrary · Built with ❤️ on GitHub Pages</p>
+<footer id="about" class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>📖 My eLibrary</h3>
+      <p>Personal collection of curated Myanmar eBooks. Built for personal reading and archival purposes.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Formats</h4>
+      <p>EPUB · PDF · KFX</p>
+    </div>
+    <div class="footer-section">
+      <h4>Connect</h4>
+      <p>
+        <a href="https://github.com/myatmoethwin" target="_blank">GitHub</a> ·
+        <a href="https://myatmoe.info">Home</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Myat Moe Thwin · Built with ❤️ on GitHub Pages</p>
+  </div>
 </footer>
 
 <script src="app.js"></script>
